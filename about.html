@@ -1,0 +1,678 @@
+<html>
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>About Me</title>
+<style>
+	.menu {
+		text-align: center;
+		vertical-align: middle;
+		height: 50;
+		font-family: 'Ubuntu', sans-serif;
+		//transition: all 300ms ease-in-out;
+	}
+	.main {
+		text-align: justify;
+		vertical-align: top;
+		height: 82vh;
+		font-family: 'Ubuntu', sans-serif;
+		//transition: all 300ms ease-in-out;
+	}
+	.buttons {
+		display: flex;
+		justify-content: space-evenly;
+		width: 100vw;
+		position: fixed;
+		bottom: 30;
+		text-align: center;
+		vertical-align: middle;
+		font-family: 'Ubuntu', sans-serif;
+		transition: all 300ms ease-in-out;
+	}
+	body {
+		overflow: hidden;
+		padding: 0;
+		margin: 0;
+		background: rgba(0, 0, 0, 0.05);
+		font-family: 'Ubuntu', sans-serif;
+		transition: all 300ms ease-in-out;
+	}
+	body.fade-in {
+		opacity: 0;
+		transition: opacity 900ms ease-in-out;
+	}
+	body.visible {
+		opacity: 1;
+	}
+	btn {
+		display: block;
+		cursor: pointer;
+		text-align: center;
+		padding: 6 24 6 22;
+		
+		border: 2px solid #262626;
+		border-radius: 14px;
+		font-size: 24;
+		user-select: none;
+		transition: all 60ms ease-in-out;
+		font-weight: bold;
+		font-style: italic;
+	}
+	.tx1 {
+		font-size: 24;
+		font-weight: normal;
+		user-select: none;
+		transition: all 300ms ease-in-out;
+	}
+	.tx2 {
+		font-size: 24;
+		font-weight: bold;
+		user-select: none;
+		transition: all 300ms ease-in-out;
+	}
+	.tx1:hover {
+		cursor: pointer;
+	}
+	.block {
+		padding: 24 0 0 0;
+		margin: 0 16% 0 16%;
+		text-align: justify;
+		opacity: 1;
+		transition: opacity 600ms ease-in-out;
+	}
+	.img {
+		width: 150;
+		height: 150;
+		min-width: 150;
+		min-height: 150;
+		max-width: 150;
+		max-height: 150;
+		border-radius: 14px;
+		display: block;
+	}
+	lineup {
+		display: block;
+		width: 130;
+		height: 2;
+		margin: 2 0 0 14;
+		background: #f6a85a;
+		transition: all 300ms ease-in-out;
+	}
+	p {margin: -3 0 0 0; padding: 0; transition: all 300ms ease-in-out; text-align: justify;}
+	span {display: inline; padding: 14; transition: all 300ms ease-in-out;}
+	a {color: #CC8E50; text-decoration: none; font-weight: bold; transition: all 300ms ease-in-out;}
+	b { color: #CC8E50; }
+	:root {
+		--mouse-x: 0;
+	}
+	.img_div {
+		float: right;
+		margin: 2px 0px 0px 14px;
+		user-select: none;
+		display: inline;
+	}
+	.img_about {
+		text-align: center;
+	}
+</style>
+<script>
+var cur_sel = 1;
+var cur_theme = 1; // 1 - light, 2 - dark
+
+function sel(id) {
+	// 1,2,3,4 - Если нажали на категорию, 5,6 - если на кнопку!
+	if (id == 5) {
+		temp_sel = cur_sel-1;
+		if (temp_sel > 0) id = temp_sel;
+		else id = 4;
+	}
+	else if (id == 6) {
+		temp_sel = cur_sel+1;
+		if (temp_sel <= 4) id = temp_sel;
+		else id = 1;
+	}
+	if (id == 1) {
+		document.getElementById("m1").className = "tx2";
+		document.getElementById("m2").className = "tx1";
+		document.getElementById("m3").className = "tx1";
+		document.getElementById("m4").className = "tx1";
+		
+		document.getElementById("w1").style.opacity = "1";
+		document.getElementById("w2").style.opacity = "0";
+		document.getElementById("w3").style.opacity = "0";
+		document.getElementById("w4").style.opacity = "0";
+
+		document.getElementById("w1").style.display = "block";
+		document.getElementById("w2").style.display = "none";
+		document.getElementById("w3").style.display = "none";
+		document.getElementById("w4").style.display = "none";
+		
+		document.getElementById("line").style.background = "#f6a85a";
+		document.getElementById("line").style.margin = "2 0 0 14";
+		document.getElementById("line").style.width = "130px";
+	}
+	else if (id == 2) {
+		document.getElementById("m1").className = "tx1";
+		document.getElementById("m2").className = "tx2";
+		document.getElementById("m3").className = "tx1";
+		document.getElementById("m4").className = "tx1";
+		
+		document.getElementById("w1").style.opacity = "0";
+		document.getElementById("w2").style.opacity = "1";
+		document.getElementById("w3").style.opacity = "0";
+		document.getElementById("w4").style.opacity = "0";
+
+		document.getElementById("w1").style.display = "none";
+		document.getElementById("w2").style.display = "block";
+		document.getElementById("w3").style.display = "none";
+		document.getElementById("w4").style.display = "none";
+		
+		document.getElementById("line").style.background = "#f76e90";
+		document.getElementById("line").style.margin = "2 0 0 176";
+		document.getElementById("line").style.width = "220px";
+	}
+	else if (id == 3) {
+		document.getElementById("m1").className = "tx1";
+		document.getElementById("m2").className = "tx1";
+		document.getElementById("m3").className = "tx2";
+		document.getElementById("m4").className = "tx1";
+		
+		document.getElementById("w1").style.opacity = "0";
+		document.getElementById("w2").style.opacity = "0";
+		document.getElementById("w3").style.opacity = "1";
+		document.getElementById("w4").style.opacity = "0";
+
+		document.getElementById("w1").style.display = "none";
+		document.getElementById("w2").style.display = "none";
+		document.getElementById("w3").style.display = "block";
+		document.getElementById("w4").style.display = "none";
+		
+		document.getElementById("line").style.background = "#ae6ef7";
+		document.getElementById("line").style.margin = "2 0 0 428";
+		document.getElementById("line").style.width = "118px";
+	}
+	else if (id == 4) {
+		document.getElementById("m1").className = "tx1";
+		document.getElementById("m2").className = "tx1";
+		document.getElementById("m3").className = "tx1";
+		document.getElementById("m4").className = "tx2";
+		
+		document.getElementById("w1").style.opacity = "0";
+		document.getElementById("w2").style.opacity = "0";
+		document.getElementById("w3").style.opacity = "0";
+		document.getElementById("w4").style.opacity = "1";
+
+		document.getElementById("w1").style.display = "none";
+		document.getElementById("w2").style.display = "none";
+		document.getElementById("w3").style.display = "none";
+		document.getElementById("w4").style.display = "block";
+		
+		document.getElementById("line").style.background = "#6e82f7";
+		document.getElementById("line").style.margin = "2 0 0 580";
+		document.getElementById("line").style.width = "108px";
+	}
+	cur_sel = id; // такс, запомним где Мы сейчас..
+}
+function colorChange() {
+	if (cur_theme == 1) {
+		cur_theme = 2;
+
+		document.getElementById("menu").style.background = "#222";
+		//document.getElementById("a").style.color = "#F7F3F2";
+		
+		document.getElementById("m1").style.color = "#F7F3F2";
+		document.getElementById("m2").style.color = "#F7F3F2";
+		document.getElementById("m3").style.color = "#F7F3F2";
+		document.getElementById("m4").style.color = "#F7F3F2";
+		
+		document.getElementById("w1").style.color = "#F7F3F2";
+		document.getElementById("w2").style.color = "#F7F3F2";
+		document.getElementById("w3").style.color = "#F7F3F2";
+		document.getElementById("w4").style.color = "#F7F3F2";
+		
+		document.getElementById("b1").style.color = "#F7F3F2";
+		document.getElementById("b2").style.color = "#F7F3F2";
+		document.getElementById("b3").style.color = "#F7F3F2";
+		document.getElementById("b1").style.border = "2px solid #F7F3F2";
+		document.getElementById("b2").style.border = "2px solid #F7F3F2";
+		document.getElementById("b3").style.border = "2px solid #F7F3F2";
+		
+		document.getElementById("b1").style.background = "#2626261f";
+		document.getElementById("b2").style.background = "#2626261f";
+		document.getElementById("b3").style.background = "#2626261f";
+		
+		document.getElementById("body").style.background = "rgba(0, 0, 0, 0.95)";
+
+		document.getElementById("left_dark").style.opacity = "0";
+		document.getElementById("right_dark").style.opacity = "0";
+		document.getElementById("left_light").style.opacity = "1";
+		document.getElementById("right_light").style.opacity = "1";
+		document.getElementById("left_dark").style.display = "none";
+		document.getElementById("right_dark").style.display = "none";
+		document.getElementById("left_light").style.display = "inline";
+		document.getElementById("right_light").style.display = "inline";
+		
+		document.getElementById("w_s1").style.background = "#141414";
+		document.getElementById("w_s1").style.color = "#F7F3F2";
+		//document.getElementById("w_s1").style.boxShadow = "10px 10px 20px 5px rgba(163, 76, 97, 0.05), 5px 5px 10px -5px rgba(163, 76, 97, 0.05)";
+		document.getElementById("w_s1").style.border = "1px solid #22222230";
+		
+		document.getElementById("w_s2").style.background = "#141414";
+		document.getElementById("w_s2").style.color = "#F7F3F2";
+		//document.getElementById("w_s2").style.boxShadow = "10px 10px 20px 5px rgba(163, 76, 97, 0.05), 5px 5px 10px -5px rgba(163, 76, 97, 0.05)";
+		document.getElementById("w_s2").style.border = "1px solid #22222230";
+
+		const langElements = document.querySelectorAll('lang');
+		for (let i = 0; i < langElements.length; i++) {
+			langElements[i].style.background = '#CC5F7A90';
+		}
+		
+		const boldElements = document.querySelectorAll('b');
+		for (let i = 0; i < boldElements.length; i++) {
+			if (cur_sel == 1) {
+				boldElements[i].style.color = '#F6A85A';
+			}
+			else if (cur_sel == 2) {
+				boldElements[i].style.color = '#F76E90';
+			}
+			else if (cur_sel == 3) {
+				boldElements[i].style.color = '#AE6EF7';
+			}
+			else if (cur_sel == 4) {
+				boldElements[i].style.color = '#6E82F7';
+			}
+		}
+		const linkElements = document.querySelectorAll('a');
+		for (let i = 0; i < linkElements.length; i++) {
+			if (cur_sel == 1) {
+				linkElements[i].style.color = '#F6A85A';
+			}
+			else if (cur_sel == 2) {
+				linkElements[i].style.color = '#F76E90';
+			}
+			else if (cur_sel == 3) {
+				linkElements[i].style.color = '#AE6EF7';
+			}
+			else if (cur_sel == 4) {
+				linkElements[i].style.color = '#6E82F7';
+			}
+		}
+	}
+	else if (cur_theme == 2) {
+		cur_theme = 1;
+		
+		document.getElementById("menu").style.background = "#ddd";
+		//document.getElementById("a").style.color = "#262626";
+
+		document.getElementById("m1").style.color = "#262626";
+		document.getElementById("m2").style.color = "#262626";
+		document.getElementById("m3").style.color = "#262626";
+		document.getElementById("m4").style.color = "#262626";
+		
+		document.getElementById("w1").style.color = "#262626";
+		document.getElementById("w2").style.color = "#262626";
+		document.getElementById("w3").style.color = "#262626";
+		document.getElementById("w4").style.color = "#262626";
+		
+		document.getElementById("b1").style.color = "#262626";
+		document.getElementById("b2").style.color = "#262626";
+		document.getElementById("b3").style.color = "#262626";
+		document.getElementById("b1").style.border = "2px solid #262626";
+		document.getElementById("b2").style.border = "2px solid #262626";
+		document.getElementById("b3").style.border = "2px solid #262626";
+
+		document.getElementById("b1").style.background = "#F7F3F21f";
+		document.getElementById("b2").style.background = "#F7F3F21f";
+		document.getElementById("b3").style.background = "#F7F3F21f";
+		
+		document.getElementById("body").style.background = "rgba(0, 0, 0, 0.05)";
+
+		document.getElementById("left_dark").style.opacity = "1";
+		document.getElementById("right_dark").style.opacity = "1";
+		document.getElementById("left_light").style.opacity = "0";
+		document.getElementById("right_light").style.opacity = "0";
+		document.getElementById("left_dark").style.display = "inline";
+		document.getElementById("right_dark").style.display = "inline";
+		document.getElementById("left_light").style.display = "none";
+		document.getElementById("right_light").style.display = "none";
+		
+		document.getElementById("w_s1").style.background = "#f8f5f4";
+		document.getElementById("w_s1").style.color = "#262626";
+		//document.getElementById("w_s1").style.boxShadow = "10px 10px 20px 5px rgba(204, 95, 122, 0.05), 5px 5px 10px -5px rgba(204, 95, 122, 0.05)";
+		document.getElementById("w_s1").style.border = "1px solid #dddddd30";
+		
+		document.getElementById("w_s2").style.background = "#f8f5f4";
+		document.getElementById("w_s2").style.color = "#262626";
+		//document.getElementById("w_s2").style.boxShadow = "10px 10px 20px 5px rgba(204, 95, 122, 0.05), 5px 5px 10px -5px rgba(204, 95, 122, 0.05)";
+		document.getElementById("w_s2").style.border = "1px solid #dddddd30";
+		
+		const langElements = document.querySelectorAll('lang');
+		for (let i = 0; i < langElements.length; i++) {
+			langElements[i].style.background = '#CC5F7A60';
+		}
+		
+		const boldElements = document.querySelectorAll('b');
+		for (let i = 0; i < boldElements.length; i++) {
+			if (cur_sel == 1) {
+				boldElements[i].style.color = '#CC8E50';
+			}
+			else if (cur_sel == 2) {
+				boldElements[i].style.color = '#CC5F7A';
+			}
+			else if (cur_sel == 3) {
+				boldElements[i].style.color = '#915ECB';
+			}
+			else if (cur_sel == 4) {
+				boldElements[i].style.color = '#5D6DCA';
+			}
+		}
+		const linkElements = document.querySelectorAll('a');
+		for (let i = 0; i < linkElements.length; i++) {
+			if (cur_sel == 1) {
+				linkElements[i].style.color = '#CC8E50';
+			}
+			else if (cur_sel == 2) {
+				linkElements[i].style.color = '#CC5F7A';
+			}
+			else if (cur_sel == 3) {
+				linkElements[i].style.color = '#915ECB';
+			}
+			else if (cur_sel == 4) {
+				linkElements[i].style.color = '#5D6DCA';
+			}
+		}
+	}
+}
+function hoverB(id) {
+	if (cur_theme == 1) {
+		if (id == 1) {
+			document.getElementById("b1").style.background = "#262626";
+
+			document.getElementById("left_dark").style.opacity = "0";
+			document.getElementById("left_dark").style.display = "none";
+
+			document.getElementById("left_light").style.opacity = "1";
+			document.getElementById("left_light").style.display = "inline";
+		}
+		if (id == 2) {
+			document.getElementById("b2").style.background = "#262626";
+
+			document.getElementById("right_dark").style.opacity = "0";
+			document.getElementById("right_dark").style.display = "none";
+
+			document.getElementById("right_light").style.opacity = "1";
+			document.getElementById("right_light").style.display = "inline";
+		}
+		if (id == 3) {
+			document.getElementById("b3").style.background = "#262626";
+			document.getElementById("b3").style.color = "#F7F3F2";
+		}
+	}
+	if (cur_theme == 2) {
+		if (id == 1) {
+			document.getElementById("b1").style.background = "#F7F3F2";
+
+			document.getElementById("left_dark").style.opacity = "1";
+			document.getElementById("left_dark").style.display = "inline";
+
+			document.getElementById("left_light").style.opacity = "0";
+			document.getElementById("left_light").style.display = "none";
+		}
+		if (id == 2) {
+			document.getElementById("b2").style.background = "#F7F3F2";
+
+			document.getElementById("right_dark").style.opacity = "1";
+			document.getElementById("right_dark").style.display = "inline";
+
+			document.getElementById("right_light").style.opacity = "0";
+			document.getElementById("right_light").style.display = "none";
+		}
+		if (id == 3) {
+			document.getElementById("b3").style.background = "#F7F3F2";
+			document.getElementById("b3").style.color = "#262626";
+		}
+	}
+}
+function houtB(id) {
+	if (cur_theme == 1) {
+		if (id == 1) {
+			document.getElementById("b1").style.background = "#F7F3F21f";
+
+			document.getElementById("left_dark").style.opacity = "1";
+			document.getElementById("left_dark").style.display = "inline";
+
+			document.getElementById("left_light").style.opacity = "0";
+			document.getElementById("left_light").style.display = "none";
+		}
+		else if (id == 2) {
+			document.getElementById("b2").style.background = "#F7F3F21f";
+
+			document.getElementById("right_dark").style.opacity = "1";
+			document.getElementById("right_dark").style.display = "inline";
+
+			document.getElementById("right_light").style.opacity = "0";
+			document.getElementById("right_light").style.display = "none";
+		}
+		else if (id == 3) {
+			document.getElementById("b3").style.background = "#F7F3F21f";
+			document.getElementById("b3").style.color = "#262626";
+		}
+	}
+	else if (cur_theme == 2) {
+		if (id == 1) {
+			document.getElementById("b1").style.background = "#2626261f";
+
+			document.getElementById("left_dark").style.opacity = "0";
+			document.getElementById("left_dark").style.display = "none";
+
+			document.getElementById("left_light").style.opacity = "1";
+			document.getElementById("left_light").style.display = "inline";
+		}
+		else if (id == 2) {
+			document.getElementById("b2").style.background = "#2626261f";
+
+			document.getElementById("right_dark").style.opacity = "0";
+			document.getElementById("right_dark").style.display = "none";
+
+			document.getElementById("right_light").style.opacity = "1";
+			document.getElementById("right_light").style.display = "inline";
+		}
+		else if (id == 3) {
+			document.getElementById("b3").style.background = "#2626261f";
+			document.getElementById("b3").style.color = "#F7F3F2";
+		}
+	}
+}
+function toggleContent(element) {
+	const content = element.nextElementSibling;
+	if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+		content.style.maxHeight = '0px';
+		content.style.padding = '0 56 0 56';
+	}
+	else {
+		content.style.maxHeight = content.scrollHeight + "px";
+		content.style.padding = '0 56 28 56';
+	}
+}
+</script>
+</head>
+<body id="body" class="fade-in">
+	<div style="width: 80%; margin: 0 auto 0 auto;">
+		<div class="menu" id="menu" style="background: #ddd; border-radius: 0px 0px 14px 14px; transition: background-color 150ms ease-in-out;">
+			<div style="display: flex; justify-content: space-evenly;">
+				<div style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap; padding-top: 7px;">
+					<span class="tx2" id="m1" onclick="sel(1)">Знакомство</span>
+					<span class="tx1" id="m2" onclick="sel(2)">Достижения и опыт</span>
+					<span class="tx1" id="m3" onclick="sel(3)">Увлечения</span>
+					<span class="tx1" id="m4" onclick="sel(4)">Связаться</span>
+					<lineup id="line"></lineup>
+				</div>
+			</div>
+		</div>
+		<div class="main" id="main">
+			<style>
+				.select {
+					box-shadow: 10px 10px 20px 5px rgba(204, 95, 122, 0.05), 5px 5px 10px -5px rgba(204, 95, 122, 0.05);
+					width: 60%;
+					min-width: 500px;
+					border: 1px solid #dddddd30;
+					background: #f8f5f4;
+					border-radius: 14px;
+					padding: 14px 56px 28px 56px;
+					display: block;
+					transition: box-shadow 150ms ease-in-out;
+				}
+				.select:nth-child(odd) {
+					margin-top: 28px;
+					margin-left: auto;
+				}
+				.select:nth-child(even) {
+					margin-top: 56px;
+					margin-right: auto;
+				}
+				.select:hover {
+					box-shadow: 10px 10px 20px 5px rgba(204, 95, 122, 0.1), 5px 5px 10px -5px rgba(204, 95, 122, 0.1);
+				}
+				.flexing {
+					width: 100%;
+					display: flex;
+					justify-content: center;
+					flex-direction: column;
+				}
+				.select_header {
+					width: 100%;
+					display: inline-block;
+					text-align: center;
+					padding-bottom: 14px;
+					font-size: 18px;
+					font-weight: bold;
+					font-style: italic;
+					user-select: none;
+				}
+				lang {
+					padding: 0 4 2 4;
+					background: #CC5F7A60;
+					border-radius: 3px;
+				}
+				hob {
+					position: relative;
+					background: #F7F3F2;
+					display: block;
+					width: 70%;
+					margin: 0 auto 0 auto;
+					border-radius: 14px;
+				}
+				hob::before {
+					content: "";
+					position: absolute;
+					top: -2px;
+					bottom: -2px;
+					left: -2px;
+					right: -2px;
+					background: linear-gradient(135deg, rgba(247, 110, 144, 0.4) 0%, rgba(174, 110, 247, 0.4) 50%, rgba(110, 130, 247, 0.4) 100%);
+					border-radius: 16px;
+					z-index: -1;
+				}
+				sh {
+					display: block;
+					text-align: center;
+					font-weight: bold;
+					font-style: italic;
+					padding: 12 0 14 0;
+					font-size: 18px;
+					cursor: pointer;
+					user-select: none;
+				}
+				hs {
+					display: block;
+					max-height: 0;
+					padding: 0 56 0 56;
+					overflow: hidden;
+					transition: all 300ms ease-in-out;
+				}
+			</style>
+			<div class="block" id="w1">
+				<p>Здоровый образ жизни - это образ жизни, который основан на правильном питании, занятиях спортом, отказе от вредных привычек, достаточном количестве сна и отдыха. Для того чтобы вести здоровый образ жизни, необходимо следить за своим питанием, употреблять достаточное количество воды, заниматься физическими упражнениями, ходить на свежий воздух, избегать стрессовых ситуаций и других вредных факторов. Здоровый образ жизни помогает укрепить иммунитет и повысить продуктивность труда!</p>
+			</div>
+			<div class="block" id="w2" style="opacity: 0; display: none;">
+				<div class="flexing">
+					<div class="select" id="w_s1"><div class="select_header">Навыки</div><p>Социальные сети оказывают большое влияние на жизнь людей. Они могут помочь в установлении контактов, расширении круга общения, получении новых знаний и информации, но также могут стать причиной зависимости, снижения продуктивности и ухудшения психического и физического здоровья. Для того чтобы использовать социальные сети в полной мере, необходимо следить за временем, проведенным в них, не злоупотреблять информацией, полученной из них, и оставаться объективным в своих высказываниях.</p></div>
+					<div class="select" id="w_s2"><div class="select_header">Опыт</div><p>Здоровый образ жизни - это образ жизни, который основан на правильном питании, занятиях спортом, отказе от вредных привычек, достаточном количестве <lang>сна</lang> и отдыха. Для того чтобы вести здоровый образ жизни, необходимо следить за своим питанием, употреблять достаточное количество воды, заниматься физическими упражнениями, ходить на свежий воздух, избегать стрессовых ситуаций и других вредных факторов. Здоровый образ жизни помогает укрепить иммунитет и повысить продуктивность труда!</p></div>
+				</div>
+			</div>
+			<div class="block" id="w3" style="opacity: 0; display: none;">
+				<hob>
+					<sh onclick="toggleContent(this)">AI Fuel</sh>
+					<hs><p>Искусственный интеллект - это область информатики, которая занимается разработкой компьютерных программ и алгоритмов, которые способны выполнять задачи, требующие интеллектуальных способностей человека. Искусственный интеллект используется в различных областях, таких как медицина, финансы, производство, транспорт и другие. Для создания искусственного интеллекта используются языки программирования, такие как Python, Java, C++, а также библиотеки и фреймворки, такие как TensorFlow, Keras, PyTorch и другие.</p></hs>
+				</hob>
+			</div>
+			<div class="block" id="w4" style="opacity: 0; display: none;">
+				<p>Здоровый образ жизни - это образ жизни, который основан на правильном питании, занятиях спортом, отказе от вредных привычек, достаточном количестве сна и отдыха. Для того чтобы вести здоровый образ жизни, необходимо следить за своим питанием, употреблять достаточное количество воды, заниматься физическими упражнениями, ходить на свежий воздух, избегать стрессовых ситуаций и других вредных факторов. Здоровый образ жизни помогает укрепить иммунитет и повысить продуктивность труда!</p>
+			</div>
+		</div>
+	</div>
+	<div class="buttons">
+		<btn id="b1" onmouseout="houtB(1)" onmouseover="hoverB(1)" onclick="sel(5)"><img id="left_dark" src="left_dark.svg"><img id="left_light" src="left_light.svg" style="opacity: 0; display: none;"></btn>
+		<btn id="b3" onmouseout="houtB(3)" onmouseover="hoverB(3)" onclick="colorChange()">color</btn>
+		<btn id="b2" onmouseout="houtB(2)" onmouseover="hoverB(2)" onclick="sel(6)"><img id="right_dark" src="right_dark.svg"><img id="right_light" src="right_light.svg" style="opacity: 0; display: none;"></btn>
+	</div>
+	<script>
+		var lastMouseX = null;
+		var ballX = 0;
+
+		function lerp(start, end, amount) {
+			return (1 - amount) * start + amount * end;
+		}
+
+		document.addEventListener('mousemove', function(event) {
+		const mouseX = event.pageX;
+
+		if (lastMouseX !== null && mouseX !== lastMouseX) {
+			ballX = lerp(ballX, mouseX, 0.1);
+			document.documentElement.style.setProperty('--mouse-x', ballX + 'px');
+		}
+		
+		lastMouseX = mouseX;
+		});
+		
+		function keySel(e){
+			switch(e.key){
+				case "ArrowLeft":
+					sel(5);
+					break;
+				case "ArrowRight":
+					sel(6);
+					break;
+			}
+		}
+
+		addEventListener("keydown", keySel);
+
+		window.addEventListener('load', function() {
+			document.body.classList.add('visible');
+		});
+		
+		const element = document.getElementById('main');
+
+		let touchStartX = 0;
+		let touchEndX = 0;
+
+		element.addEventListener('touchstart', function(event) {
+			touchStartX = event.touches[0].clientX;
+		});
+
+		element.addEventListener('touchend', function(event) {
+			touchEndX = event.changedTouches[0].clientX;
+
+			if (touchEndX < touchStartX && (touchStartX - touchEndX) >= 150) {
+				sel(6);
+			}
+			else if (touchEndX > touchStartX && (touchEndX - touchStartX) >= 150) {
+				sel(5);
+			}
+		});
+	 </script>
+</body>
+</html>
